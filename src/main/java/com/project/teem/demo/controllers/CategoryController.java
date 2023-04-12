@@ -7,7 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 @Controller
 public class CategoryController {
@@ -31,6 +37,28 @@ public class CategoryController {
     @PostMapping("/admin/category/add")
     public String addCategory(@ModelAttribute("category") Category category){
         categoryService.saveCategory(category);
-        return "admin/admin_category";
+        return "redirect:/admin/category";
+    }
+
+    @GetMapping("/admin/category/view/{id}")
+    public String viewCategory(@PathVariable("id") Long id, Model model){
+        Category categoryById = categoryService.getCategoryById(id);
+        model.addAttribute("category", categoryById);
+        return "admin/view_category";
+    }
+
+    @PostMapping("/admin/category/view/{id}")
+    public String updateAndDelete(@PathVariable("id") Long id, @ModelAttribute("category") Category category){
+        Category existedCategory = categoryService.getCategoryById(id);
+        existedCategory.setId(id);
+        existedCategory.setName(category.getName());
+        categoryService.updateCategory(existedCategory);
+        return "redirect:/admin/category";
+    }
+
+    @GetMapping("/admin/category/{id}")
+    public String deleteCategory(@PathVariable("id") Long id){
+        categoryService.deleteCategory(id);
+        return "redirect:/admin/category";
     }
 }
