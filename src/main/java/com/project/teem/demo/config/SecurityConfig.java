@@ -22,6 +22,8 @@ public class SecurityConfig{
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/", "/index").permitAll()
+                .requestMatchers("/shop","/shop/item/details").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin((form) -> form
@@ -42,7 +44,7 @@ public class SecurityConfig{
         UserDetails admin = User.builder()
                 .username("admin")
                 .password(passwordEncoder().encode("admin"))
-                .roles("ADMIN","USER")
+                .roles("ADMIN")
                 .build();
         UserDetails user = User.builder()
                 .username("user")
