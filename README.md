@@ -1,5 +1,5 @@
 
-#Teem Collection ecommerce project (Springboot)
+#Teem-Collection-Ecommerce-Project(Springboot)
 
 
 * Spring Web
