@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans,Poppins:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -67,20 +67,24 @@
                 <th scope="col">Price</th>
                 <th scope="col">Category</th>
                 <th scope="col">Created Date</th>
+                <th scope="col">Figure</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="item, index : ${item}">
-                <td th:text="${index.count}"></td>
-                <td th:text="${item.name}"></td>
-                <td th:text="${item.description}"></td>
-                <td th:text="${item.color}"></td>
-                <td th:text="${item.size}"></td>
-                <td th:text="${item.price}"></td>
-                <td th:text="${item.category?.name}"></td>
-                <td th:text="${item.createdDate}"></td>
-                <td>
+                <td class="align-middle" th:text="${index.count}"></td>
+                <td class="align-middle" th:text="${item.name}"></td>
+                <td class="align-middle" th:text="${item.description}"></td>
+                <td class="align-middle" th:text="${item.color}"></td>
+                <td class="align-middle" th:text="${item.size}"></td>
+                <td class="align-middle" th:text="${item.price}"></td>
+                <td class="align-middle" th:text="${item.category?.name}"></td>
+                <td class="align-middle" th:text="${item.createdDate}"></td>
+                <td class="align-middle">
+                    <img class="img-fluid" style="width: 70px;" th:src="@{'data:image/png;base64,' + ${item.image}}" />
+                </td>
+                <td class="align-middle">
                     <a th:href="@{/admin/item/view/{id}(id=${item.id})}" class="btn btn-secondary me-3">View</a>
                     <a th:href="@{/admin/item/{id}(id=${item.id})}" class="btn btn-danger">Delete</a>
                 </td>

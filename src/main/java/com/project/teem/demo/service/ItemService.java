@@ -1,7 +1,9 @@
 package com.project.teem.demo.service;
 
+import com.project.teem.demo.dto.ItemDto;
 import com.project.teem.demo.models.Item;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ItemService {
@@ -12,6 +14,10 @@ public interface ItemService {
 
     Item getItemById(Long id);
 
-    Item saveItem(Item item);
+    Item saveItem(ItemDto itemDto) throws IOException;
+
+    Item updateItem(ItemDto itemDto) throws IOException;
+
+    void deleteItem(Long id);
 
 }

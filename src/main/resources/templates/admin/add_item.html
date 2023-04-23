@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans,Poppins:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -42,7 +42,7 @@
 <h4 class="text-center my-3">Create new item</h4>
 <div class="container my-3 d-flex justify-content-center">
     <div class="card p-3" style="width: 30rem;">
-        <form th:action="@{/admin/item/add}" th:object="${item}" method="post">
+        <form th:action="@{/admin/item/add}" enctype="multipart/form-data" th:object="${item}" method="post">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Name</label>
                 <input type="text"
@@ -96,6 +96,9 @@
                             th:text = "${category.name}">
                     </option>
                 </select>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" accept="image/*" type="file" name="image" />
             </div>
             <div class="mb-3">
                 <button class="btn btn-dark w-100" type="submit">Create</button>

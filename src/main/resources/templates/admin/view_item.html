@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Teem | Category</title>
+    <title>Teem | View Item</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,23 +39,72 @@
     </div>
 </nav>
 
-<h4 class="text-center my-3">View category</h4>
+<h4 class="text-center my-3">Update item</h4>
 <div class="container my-3 d-flex justify-content-center">
     <div class="card p-3" style="width: 30rem;">
-        <form th:action="@{/admin/category/view/{id}(id=${category.id})}" th:object="${category}" method="post">
-            <div class="form-floating mb-3">
+        <form th:action="@{/admin/item/view/{id}(id=${item.id})}" enctype="multipart/form-data" th:object="${item}" method="post">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
                 <input type="text"
                        class="form-control"
-                       id="floatingInput"
+                       id="exampleFormControlInput1"
                        name="name"
                        th:field="*{name}" required />
-                <label for="floatingInput" class="form-label">Category Name</label>
+            </div>
+            <div class="form-control mb-3">
+                <label for="exampleFormControlInput2" class="form-label">Description</label>
+                    <textarea class="form-control"
+                              id="exampleFormControlInput2"
+                              rows="3"
+                              name="description"
+                              th:field="*{description}">
+                    </textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput3" class="form-label">Color</label>
+                <input type="text"
+                       class="form-control"
+                       id="exampleFormControlInput3"
+                       name="color"
+                       th:field="*{color}" required />
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput4" class="form-label">Size</label>
+                <input type="text"
+                       class="form-control"
+                       id="exampleFormControlInput4"
+                       name="size"
+                       th:field="*{size}" required />
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput6" class="form-label">Price</label>
+                <input type="text"
+                       class="form-control"
+                       id="exampleFormControlInput6"
+                       name="price"
+                       th:field="*{price}" required />
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput5" class="form-label">Select Category</label>
+                <select id="exampleFormControlInput5"
+                        th:field = "*{category}"
+                        name="category"
+                        class="form-select">
+                    <option th:value = "null">Choose Category</option>
+                    <option th:each = "category : ${category}"
+                            th:value = "${category.id}"
+                            th:text = "${category.name}">
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" accept="image/*" type="file" name="image" />
             </div>
             <div class="mb-3">
                 <button class="btn btn-dark w-100" type="submit">Update</button>
             </div>
             <div class="mb-3">
-                <a class="btn btn-secondary w-100" th:href="@{/admin/category}">Cancel</a>
+                <a class="btn btn-secondary w-100" th:href="@{/admin/item}">Cancel</a>
             </div>
         </form>
     </div>

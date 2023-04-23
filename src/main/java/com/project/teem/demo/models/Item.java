@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "item")
 public class Item {
@@ -23,14 +23,18 @@ public class Item {
     private String name;
     private String description;
     private String color;
-    private String img;
+
+    @Lob
+    @Column(columnDefinition = "longblob")
+    private String image;
+
     private String size;
     private String price;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 }

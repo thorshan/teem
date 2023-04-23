@@ -4,7 +4,6 @@ package com.project.teem.demo.service;
 import com.project.teem.demo.models.Category;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CategoryService {
 
