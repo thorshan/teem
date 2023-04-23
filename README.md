@@ -1,6 +1,15 @@
 
 #Teem Collection ecommerce project (Springboot)
 
+
+* Spring Web
+* Spring Security
+* Spring Data JPA
+* Hibernate
+* MySQL database
+* Thymeleaf server site template
+* Bootstrap
+
 The eCommerce website is an online shopping platform built using the latest web technologies. 
 
 The website is developed using Spring Boot, Spring Security, Thymeleaf, Hibernate, Spring Data JPA, Bootstrap, and MySQL. 
