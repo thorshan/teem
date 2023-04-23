@@ -1,5 +1,5 @@
-# teem
-Teem Collection ecommerce project (Springboot)
+
+#Teem Collection ecommerce project (Springboot)
 
 The eCommerce website is an online shopping platform built using the latest web technologies. 
 
@@ -12,4 +12,6 @@ The front-end is developed using Bootstrap and Thymeleaf templates, providing a 
 The application is secured using Spring Security, ensuring that customer data is kept safe and secure. 
 
 The project has a well-organized structure, with the various layers of the application (controller, service, repository, and model) separated into different packages.
+
+This project is all about educational purpose any names, lisences and other legal properties are credited to all owners.
 
