@@ -50,27 +50,21 @@
     </nav>
 </div>
 
-<div class="container d-flex justify-content-around">
+<div class="container d-flex justify-content-around" th:each="item : ${item}">
     <div class="card my-5" style="width: 18rem;">
-        <img src="/tshirt.jpeg" class="card-img-top" alt="...">
+        <img class="img-fluid" th:src="@{'data:image/png;base64,' + ${item.image}}"/>
     </div>
     <div class="item-details w-50 my-5">
-        <h4>Item Name</h4>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Sapiente molestiae illo ab! Porro velit quibusdam,
-            suscipit doloribus odio rem ratione voluptate consectetur
-            exercitationem. Veniam quidem ipsam nostrum, sed quisquam
-            iure at doloremque saepe. Blanditiis molestiae aperiam
-            accusamus saepe! Qui, nostrum!
-        </p>
+        <h4 th:text="${item.name}"></h4>
+        <p th:text="${item.description}"></p>
         <div class="tag">
-            <p>Color : Blue</p>
-            <p>Size : Free</p>
-            <p>Price : 34,000 Ks</p>
+            <p th:text="'Color : ' + ${item.color}"></p>
+            <p th:text="'Size : ' + ${item.size}"></p>
+            <p th:text="'Price : ' + ${item.price}"></p>
         </div>
         <div class="action">
-            <a href="#" class="btn btn-secondary">Continue Browsing</a>
-            <a href="#" class="btn btn-secondary">Add to Cart</a>
+            <a th:href="@{/shop}" class="btn btn-secondary">Continue Browsing</a>
+            <a th:href="@{/shop/cart/{id}(id=${item.id})}" class="btn btn-secondary">Add to Cart</a>
         </div>
     </div>
 </div>

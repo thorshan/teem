@@ -41,44 +41,18 @@
 </nav>
 
 <div class="container-fluid p-0 d-flex justify-content-start">
-    <div class="side-nav">
-        <ul class="navbar-nav">
-            <li class="nav-item my-2">
-                <a href="#" class="nav-link btn btn-secondary text-wrap">Men Collections</a>
-            </li>
-            <li class="nav-item my-2">
-                <a href="#" class="nav-link btn btn-secondary">Women Collections</a>
-            </li>
-            <li class="nav-item my-2">
-                <a href="#" class="nav-link btn btn-secondary">Junior Collections</a>
-            </li>
-            <li class="nav-item my-2">
-                <a href="#" class="nav-link btn btn-secondary">Browse More</a>
-            </li>
-        </ul>
-    </div>
 
     <div class="container my-3">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a th:href="@{/}" class="text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                <li class="breadcrumb-item"><a th:href="@{/shop}" class="text-decoration-none">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cart</li>
             </ol>
         </nav>
     </div>
 
-    <div class="side-menu mt-3">
-        <div class="side-menu-header">Collection Name</div>
-        <div class="collection-container my-3 d-flex" th:each="item : ${item}">
-            <div class="card me-2" style="width: 18rem;">
-                <img th:src="@{'data:image/png;base64,' + ${item.image}}" class="card-img-top" alt="...">
-                <div class="card-body bg-secondary-subtle d-flex justify-content-around">
-                    <a th:href="@{/shop/cart/{id}(id=${item.id})}" class="card-link btn btn-secondary"><i class="fa-solid fa-heart me-2"></i>Add to Cart</a>
-                    <a th:href="@{/shop/item/details/{id}(id=${item.id})}" class="card-link btn btn-secondary">View</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 
